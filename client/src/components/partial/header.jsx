@@ -8,16 +8,17 @@ function Header(props){
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
     const [loading, setLoading] = useState(true);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         let mounted = true;
 
-        Axios.get('http://localhost:8000/api/checkAuthentication', { withCredentials: true })
+        Axios.get(`${apiUrl}/api/checkAuthentication`, { withCredentials: true })
         .then(result => {
             if(mounted){
                 if(result.data){
                     setIsLoggedIn(result.data);
-                    Axios.get('http://localhost:8000/api/checkAdminAuthentication', { withCredentials: true })
+                    Axios.get(`${apiUrl}/api/checkAdminAuthentication`, { withCredentials: true })
                     .then(data => {
                         setIsAdmin(data.data);
                         setLoading(false);

@@ -4,11 +4,12 @@ import {withRouter} from 'react-router-dom';
 
 function Navigation(props){ 
     const [genres, setGenres] = useState([]);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         let mounted = true;
         
-        Axios.get('http://localhost:8000/api/genres/getAll', {withCredentials: true})
+        Axios.get(`${apiUrl}/api/genres/getAll`, {withCredentials: true})
         .then(res => {
             if(mounted){
                 setGenres(res.data);

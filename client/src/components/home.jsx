@@ -10,11 +10,12 @@ import Footer from './partial/footer';
 function Home(props){
     const [featuredBooks, setFeaturedBooks] = useState([]);
     const [loading, setLoading] = useState(true);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         let mounted = true;
 
-        Axios.get('http://localhost:8000/api/books/getAllFeatured', {withCredentials: true})
+        Axios.get(`${apiUrl}/api/books/getAllFeatured`, {withCredentials: true})
         .then(res => {
             if(mounted){
                 setFeaturedBooks(res.data);

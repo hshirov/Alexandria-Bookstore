@@ -18,6 +18,7 @@ const booksRoutes = require('./routes/books');
 const genresRoutes = require('./routes/genres');
 const adminRoutes = require('./routes/admin');
 const confirmationRoutes = require('./routes/confirmation');
+const path = require('path');
 // ---------------------------------------------- END OF IMPORTS ----------------------------------------------
 
 // Connections
@@ -67,13 +68,23 @@ app.use(passport.session());
 // ---------------------------------------------- END OF MIDDLEWARE ----------------------------------------------
 
 // Routes
-app.use('/books', booksRoutes);
-app.use('/basket', basketRoutes);
-app.use('/admin', adminRoutes);
-app.use('/genres', genresRoutes);
-app.use('/confirmation', confirmationRoutes);
-app.use('/', indexRoutes);
+app.use('/api/books', booksRoutes);
+app.use('/api/basket', basketRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/genres', genresRoutes);
+app.use('/api/confirmation', confirmationRoutes);
+app.use('/api/', indexRoutes);
 // ---------------------------------------------- END OF ROUTES ----------------------------------------------
+
+// Serve static assets in production
+if(process.env.NODE_ENV === 'production'){
+    // Set static folder
+    app.use(express.static('../client/build'));
+    
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '..', 'client', 'build', 'index.html'));
+    });
+}
 
 // Error handler
 app.use((err, req, res, next) => {

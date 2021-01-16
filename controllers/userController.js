@@ -37,7 +37,7 @@ exports.createUser = (req, res, next) => {
                 process.env.EMAIL_SECRET,
                 {expiresIn: '1d',},
                 (err, emailToken) => {
-                  const url = `http://localhost:8000/confirmation/${emailToken}`;
+                  const url = `http://localhost:8000/api/confirmation/${emailToken}`;
 
                   transporter.sendMail({
                     to: newUser.email,

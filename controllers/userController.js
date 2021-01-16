@@ -5,6 +5,8 @@ const {validationResult} = require('express-validator');
 const passport = require('passport');
 require('../passportConfig')(passport);
 require('dotenv').config();
+const endpointUrl = process.env.ENDPOINT_URL;
+const apiUrl = process.env.API_URL;
 
 const transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -37,7 +39,7 @@ exports.createUser = (req, res, next) => {
                 process.env.EMAIL_SECRET,
                 {expiresIn: '1d',},
                 (err, emailToken) => {
-                  const url = `http://localhost:8000/api/confirmation/${emailToken}`;
+                  const url = `${apiUrl}/api/confirmation/${emailToken}`;
 
                   transporter.sendMail({
                     to: newUser.email,
@@ -83,5 +85,5 @@ exports.confirmUser = async (req, res, next) => {
         res.send('error');
     }
 
-    return res.redirect('http://localhost:3000/login');
+    return res.redirect(`${endpointUrl}/login`);
 }

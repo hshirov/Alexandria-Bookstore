@@ -14,11 +14,12 @@ function Books(props){
     const [sortBy] = useState(qs.parse(props.location.search, {ignoreQueryPrefix: true}).orderby);
     const [descending] = useState(qs.parse(props.location.search, {ignoreQueryPrefix: true}).descending);
     const [loading, setLoading] = useState(true);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         let mounted = true;
 
-        const APIRequest = `http://localhost:8000/api/books/getAll?genre=${genre ? genre : ''}&orderby=${sortBy ? sortBy : 'title'}&descending=${descending ? descending : 'false'}`;
+        const APIRequest = `${apiUrl}/api/books/getAll?genre=${genre ? genre : ''}&orderby=${sortBy ? sortBy : 'title'}&descending=${descending ? descending : 'false'}`;
         Axios.get(APIRequest, {withCredentials: true})
         .then(res => {
             if(mounted){
@@ -43,7 +44,7 @@ function Books(props){
     }
 
     const remove = (id, image) => {
-        Axios.post('http://localhost:8000/api/admin/remove', {id: id}, {withCredentials: true})
+        Axios.post(`${apiUrl}/api/admin/remove`, {id: id}, {withCredentials: true})
         .then(() => {
             const storageRef = app.storage().ref();
             storageRef.child(image).delete();

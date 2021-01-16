@@ -12,11 +12,12 @@ function Book(props){
     const [imageUrl, setImageUrl] = useState('');
     const [available, setAvailable] = useState(null);
     const [featured, setFeatured] = useState(null);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         let mounted = true;
 
-        Axios.get(`http://localhost:8000/api/books/get/${title}`, {withCredentials: true})
+        Axios.get(`${apiUrl}/api/books/get/${title}`, {withCredentials: true})
         .then(res => {
             if(mounted){
                 setBook(res.data);       
@@ -39,13 +40,13 @@ function Book(props){
     }, [title, props.history]);
 
     const updateAvailability = () => {
-        Axios.post('http://localhost:8000/api/admin/update', {id: book._id, field: 'available', value: !available}, {withCredentials: true})
+        Axios.post(`${apiUrl}/api/admin/update`, {id: book._id, field: 'available', value: !available}, {withCredentials: true})
         .catch(() => props.history.push('/error'));
         window.location.reload();
     }
 
     const updateFeatured = () => {
-        Axios.post('http://localhost:8000/api/admin/update', {id: book._id, field: 'featured', value: !featured}, {withCredentials: true})
+        Axios.post(`${apiUrl}/api/admin/update`, {id: book._id, field: 'featured', value: !featured}, {withCredentials: true})
         .catch(() => props.history.push('/error'));
         window.location.reload();
     }

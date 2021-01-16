@@ -17,11 +17,12 @@ function Books(props){
     const [descending] = useState(qs.parse(props.location.search, {ignoreQueryPrefix: true}).descending);
     const [loading, setLoading] = useState(true);
     toast.configure();
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         let mounted = true;
         
-        const APIRequest = `http://localhost:8000/api/books/getAll?genre=${genre ? genre : ''}&orderby=${sortBy ? sortBy : 'title'}&descending=${descending ? descending : 'false'}`;
+        const APIRequest = `${apiUrl}/api/books/getAll?genre=${genre ? genre : ''}&orderby=${sortBy ? sortBy : 'title'}&descending=${descending ? descending : 'false'}`;
         Axios.get(APIRequest, {withCredentials: true})
         .then(res => {
             if(mounted){
@@ -37,7 +38,7 @@ function Books(props){
     }, [genre, descending, sortBy, props.history]);
 
     const addToBasket = (id) => {
-        Axios.get(`http://localhost:8000/api/basket/add/${id}`, {withCredentials: true})
+        Axios.get(`${apiUrl}/api/basket/add/${id}`, {withCredentials: true})
         .then(() => {toast.info("Book added to basket!", {position: toast.POSITION.BOTTOM_RIGHT, pauseOnHover: false, autoClose: 2000})});
     };
 

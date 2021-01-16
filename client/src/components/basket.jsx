@@ -11,11 +11,13 @@ function Basket(props){
     const [isBasketEmpty, setisBasketEmpty] = useState(null);
     const [loading, setLoading] = useState(true);
     toast.configure();
+    const apiUrl = process.env.REACT_APP_API_URL;
+
 
     useEffect(() => {
         let mounted = true;
 
-        Axios.get('http://localhost:8000/api/basket/getItems', {withCredentials: true})
+        Axios.get(`${apiUrl}/api/basket/getItems`, {withCredentials: true})
         .then(res => {
             if(mounted){
                 if(res.data === 'emptyBasket'){
@@ -37,7 +39,7 @@ function Basket(props){
     }, [props.history]);
 
     const clearBasket = () => {
-        Axios.get('http://localhost:8000/api/basket/clear', {withCredentials: true})
+        Axios.get(`${apiUrl}/api/basket/clear`, {withCredentials: true})
         .then(() => {
             toast.info("Basket cleared!", {position: toast.POSITION.BOTTOM_RIGHT, pauseOnHover: false, autoClose: 2000});
             setisBasketEmpty(true);
@@ -45,7 +47,7 @@ function Basket(props){
     }
 
     const removeItem = (id) => {
-        Axios.get(`http://localhost:8000/api/basket/remove/${id}`, {withCredentials: true})
+        Axios.get(`${apiUrl}/api/basket/remove/${id}`, {withCredentials: true})
         .then(() => {
             window.location.reload();
         });

@@ -37,7 +37,7 @@ function Header(props){
     }, [props.history]);
 
     const logOut = () => {
-        Axios.get('http://localhost:8000/api/logout', { withCredentials: true })
+        Axios.get(`${apiUrl}/api/logout`, { withCredentials: true })
         .then(result => {
             props.history.push(result.data);
             setIsLoggedIn(false);

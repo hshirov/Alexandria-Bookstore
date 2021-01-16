@@ -16,11 +16,12 @@ function Add(props){
     const [alerts, setAlerts] = useState([]);
     const [genres, setGenres] = useState([]);
     toast.configure();
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         let mounted = true;
 
-        Axios.get('http://localhost:8000/api/genres/getAll', {withCredentials: true})
+        Axios.get(`${apiUrl}/api/genres/getAll`, {withCredentials: true})
         .then(res => {
             if(mounted){
                 const requestedGenres = res.data;
@@ -52,7 +53,7 @@ function Add(props){
     const handleSubmit = (event) => {
         event.preventDefault();
         const imageName = title + ' - ' + author;
-        Axios.post('http://localhost:8000/api/admin/add', {title: title, author: author, genre: genre, price: price, 
+        Axios.post(`${apiUrl}/api/admin/add`, {title: title, author: author, genre: genre, price: price, 
         publishedDate: publishedDate, description: description, availability: availability, featured: featured, image: imageName}, {withCredentials: true})
         .then(res => {
             const errors = res.data.errors;

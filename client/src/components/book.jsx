@@ -14,11 +14,12 @@ function Book(props){
     const [loading, setLoading] = useState(true);
     const [imageUrl, setImageUrl] = useState('');
     toast.configure();
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         let mounted = true;
 
-        Axios.get(`http://localhost:8000/api/books/get/${title}`, {withCredentials: true})
+        Axios.get(`${apiUrl}/api/books/get/${title}`, {withCredentials: true})
         .then(res => {
             if(mounted){
                 setBook(res.data);  
@@ -39,7 +40,7 @@ function Book(props){
     }, [title, props.history]);
 
     const addToBasket = (id) => {
-        Axios.get(`http://localhost:8000/api/basket/add/${id}`, {withCredentials: true})
+        Axios.get(`${apiUrl}/api/basket/add/${id}`, {withCredentials: true})
         .then(() => {toast.info("Book added to basket!", {position: toast.POSITION.BOTTOM_RIGHT, pauseOnHover: false, autoClose: 2000})});
     };
 

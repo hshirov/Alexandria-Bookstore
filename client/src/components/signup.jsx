@@ -14,9 +14,10 @@ function SignUp(props){
     const [isLoggedIn, setIsLoggedIn] = useState(null);
     const [loading, setLoading] = useState(true);
     toast.configure();
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
-        Axios.get('http://localhost:8000/api/checkAuthentication', { withCredentials: true })
+        Axios.get(`${apiUrl}/api/checkAuthentication`, { withCredentials: true })
         .then(result => {
             setIsLoggedIn(result.data);
             setLoading(false);
@@ -29,7 +30,7 @@ function SignUp(props){
         // Reset the alerts on every call to the API
         setAlerts([]);
 
-        Axios.post('http://localhost:8000/api/signup', {email: email, password: password, confirmPassword: confirmPassword})
+        Axios.post(`${apiUrl}/api/signup`, {email: email, password: password, confirmPassword: confirmPassword})
         .then((res) => { 
             const errors = res.data.errors;      
             if(errors.length > 0 && errors[0].msg === 'Succesfully created'){

@@ -1,0 +1,165 @@
+.book-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: minmax(200px, auto);
+    align-content: center;
+    justify-content: center;
+    column-gap: 1%;
+}
+
+.book-item{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-bottom: 5%;
+    column-gap: 2%;
+}
+
+@media (max-width:1000px){
+    .book-container{
+        grid-template-columns: 1fr;
+    }
+}
+
+.description-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: start;
+    justify-self: start;
+    text-align: left;
+}
+
+.book-item img{
+    width: 100%;
+    height: auto;
+}
+
+.book-title{
+    font-size: 2em;
+    color: #323232;
+    margin-bottom: 5px;
+}
+
+.book-author{
+    font-weight: 300;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+    color: #747474;
+}
+
+.book-add-to-basket{
+    justify-self: start;
+}
+
+.book-add-to-basket:hover{
+    color: #0b3768;
+}
+
+.order-by-form{
+    margin-bottom: 15px;
+    color: #747474;
+}
+
+.order-by-form select{
+    outline: 0;
+    border-radius: 5px;
+    padding: .2em 0;
+    box-shadow: none;
+    width: 7%;
+}
+
+@media (max-width:1000px){
+    .order-by-form select{
+        width: 20%;
+    }
+}
+
+.sort-options-container button{
+    margin-left: 1%;
+}
+
+/* book.jsx */
+.single-book-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 20px;
+    width: 60%;
+    margin: auto;
+    color: #323232;
+    margin-top: 15px;
+}
+
+@media (max-width:1000px){
+    .single-book-container{
+        width: 100%;
+    }
+}
+
+.single-book-image > img{
+    width: 100%;
+    height: auto;
+}
+
+.single-book-title{
+    font-weight: 600;
+    font-size: 3em;
+    margin-bottom: 5px;
+}
+
+.single-book-author, .single-book-date, .single-book-genre{
+    font-weight: 100;
+    font-size: 1.2em;
+}
+
+.single-book-genre{
+    font-size: 1.2em;
+}
+
+.single-book-price{
+    font-size: 1.5em;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: 200;
+    color: #323232;
+}
+
+.single-book-add-to-basket{
+    font-size: 1.3em;
+    color: #666666;
+    border: 1px solid #666666;
+    border-radius: 8px;
+    width: 7em;
+    height: 2em;
+}
+
+.single-book-add-to-basket:hover{
+    color: #000000;
+    border: 1px solid #000000;
+}
+
+.single-book-description{
+    margin-top: 15px;
+    font-size: 1.3em;
+    color: #323232;
+}
+
+.single-book-description > h1{
+    font-size: 1.5em;
+}
+
+.single-book-in-stock{
+    color: #25a000;
+    margin-bottom: 5px;
+}
+
+.single-book-out-of-stock{
+    color: #c20303;
+    margin-bottom: 5px;
+}
+
+.genre-title{
+    color: #747474;
+    font-weight: 100;
+    margin-bottom:  15px;
+    text-align: left;
+    font-size: 2em;
+}

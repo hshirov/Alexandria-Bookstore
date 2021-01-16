@@ -1,0 +1,131 @@
+.admin-add-title{
+    font-weight: 100;
+    text-align: left;
+}
+
+.admin-add-checkbox-title{
+    font-size: 1.5em;
+    text-align: left;
+}
+
+.form-admin{
+    width: 50%;
+    margin: auto;
+}
+
+@media (max-width:1000px){
+    .form-admin{
+        width: 100%;
+    }
+}
+
+.form-admin input[type="text"]{
+    width: 100%;
+    font-size: 17px;
+}
+
+.form-admin input[type="checkbox"]{
+    margin-right: .4em;
+    margin-bottom: 1em;
+    text-align: left;
+}
+
+.form-admin input[type="file"]{
+    margin: .5em 0;
+}
+
+.form-admin label{
+    font-size: 1.3em;
+    color: #323232;
+}
+
+.form-admin textarea{
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 400px;
+    min-height: 200px;
+    font-family: GT;
+    color: #323232;
+    border: 1px solid #323232;
+    border-radius: 6px;
+    padding: 8px;
+    background-color: #ffffff;
+}
+
+.form-admin button{
+    margin-top: 1em;
+    width: 30%;
+}
+
+.drain{
+    text-align: left;
+}
+
+.admin-back-button{
+    margin-top: 2em;
+}
+
+.single-book-remove{
+    font-size: 1.3em;
+    color: #d32c2c;
+    border: 1px solid #d32c2c;
+    border-radius: 8px;
+    width: 7em;
+    height: 2em;
+    margin-top: 1em;
+}
+
+.single-book-remove:hover{
+    color: #ff1818;
+    border: 1px solid #ff1818;
+}
+
+.admin-button{
+    border: 2px solid #0eb331;
+    color: #005212;
+    border-radius: 15px;
+    width: 25%;
+    height: 3em;
+    font-size: 1.5em;
+    margin-top: 2%;
+}
+
+.admin-button:hover{
+    border: 2px solid #0a8826;
+    color: #002e0a;
+}
+
+.admin-buttons-container{
+    text-align: center;
+}
+
+.admin-panel-title{
+    color: #323232;
+}
+
+.genre-dropdown{
+    width: 100%;
+    font-size: 17px;
+    border-radius: 6px;  
+    margin-bottom: .5em;
+    height: 2.2em;
+    background-color: #ffffff;
+    border: 1px solid #323232;
+}
+
+.availability-selector{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5px;
+    text-align: left;
+}
+
+.availability-selector div{
+    text-align: center;
+    padding: 2px;
+}
+
+.selected-outline{
+    border: 2px solid #585858;
+    border-radius: 6px;
+}

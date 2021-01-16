@@ -1,0 +1,46 @@
+.basket-empty-container{
+    text-align: center;
+}
+
+.basket-empty-container h1{
+    font-weight: 100;
+    color: #666666;
+}
+
+.basket-items-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+}
+
+.book-in-basket{
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    column-gap: 10px;
+    color: #323232;
+}
+
+.book-in-basket-info p{
+    color: #666666;
+}
+
+.book-in-basket img{
+    width: 100%;
+    height: auto;
+}
+
+.basket-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+}
+
+.basket-info{
+    border-top: 1px solid #323232;
+}
+
+.basket-info h2{
+    color: #323232;
+    font-size: 2em;
+    font-weight: 200;
+}
